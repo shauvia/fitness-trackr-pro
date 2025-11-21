@@ -29,12 +29,15 @@ export function AuthProvider({ children }) {
   };
 
   const login = async (credentials) => {
+    console.log("credentials", credentials);
     const response = await fetch(API + "/users/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials),
     });
+    console.log("login, response", response);
     const result = await response.json();
+    console.log("login, result", result);
     if (!response.ok) {
       throw Error(result.message);
     }

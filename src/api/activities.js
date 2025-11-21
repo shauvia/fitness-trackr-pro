@@ -4,7 +4,9 @@ const API = import.meta.env.VITE_API;
 export async function getActivities() {
   try {
     const response = await fetch(API + "/activities");
+    console.log("get response", response);
     const result = await response.json();
+    console.log("get, result", result);
     return result;
   } catch (e) {
     console.error(e);
@@ -53,5 +55,17 @@ export async function deleteActivity(token, id) {
   if (!response.ok) {
     const result = await response.json();
     throw Error(result.message);
+  }
+}
+
+export async function getSingleActivity(activityId) {
+  try {
+    const response = await fetch(API + "/activities" + activityId);
+    const result = await response.json();
+    console.log("getSingleActivity, result", result);
+    return result;
+  } catch (error) {
+    console.error(e);
+    return {};
   }
 }
