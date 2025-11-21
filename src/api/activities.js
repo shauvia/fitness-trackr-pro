@@ -60,7 +60,7 @@ export async function deleteActivity(token, id) {
 
 export async function getSingleActivity(activityId) {
   try {
-    const response = await fetch(API + "/activities" + activityId);
+    const response = await fetch(API + "/activities" + "/" + activityId);
     const result = await response.json();
     console.log("getSingleActivity, result", result);
     return result;
